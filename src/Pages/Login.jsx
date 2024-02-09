@@ -22,7 +22,7 @@ const Login = () => {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:5000/members/login", {
+      const response = await fetch(`${process.env.REACT_APP_GYM_BACKEND}/members/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
