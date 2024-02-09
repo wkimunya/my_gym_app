@@ -3,6 +3,7 @@ import { useState } from "react";
 import { UserAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
+import {supabase} from "../supabaseCLient"
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -22,6 +23,10 @@ const Login = () => {
     setError("");
 
     try {
+      const { user, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
       const response = await fetch(`${process.env.REACT_APP_GYM_BACKEND}/members/login`, {
         method: "POST",
         headers: {
@@ -29,7 +34,11 @@ const Login = () => {
         },
         body: JSON.stringify({ email, password }),
       });
-
+      if (error) {
+        console.error('Error signing up:', error.message);
+      } else {
+        console.log('User signed up successfully:', user);
+      }
       if (response.ok) {
         const user = await response.json();
         localStorage.setItem("user", JSON.stringify(user));
