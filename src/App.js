@@ -21,6 +21,7 @@ import Gallery from "./Pages/Gallery/Gallery";
 import GalleryPage1 from "./Pages/Gallery/GalleryPage1";
 import GalleryPage2 from "./Pages/Gallery/GalleryPage2";
 import About from "./Pages/About";
+import Checkout from "./Pages/Checkout";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="pricing" element={<Price />} />
           <Route path="about" element={<About />} />
           <Route path="workout" element={<WorkoutPlan />} />
+          <Route path="checkout" element={<Checkout />} />
 
           {/* <Route path="schedule" element={<Schedule />}>
             <Route path="monday" element={<Monday />} />

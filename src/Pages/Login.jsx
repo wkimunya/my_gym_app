@@ -27,7 +27,7 @@ const Login = () => {
         email,
         password,
       });
-      const response = await fetch(`${process.env.REACT_APP_GYM_BACKEND}/members/login`, {
+      const response = await fetch(`${process.env.REACT_APP_GYM_BACKEND}members/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -42,7 +42,7 @@ const Login = () => {
       if (response.ok) {
         const user = await response.json();
         localStorage.setItem("user", JSON.stringify(user));
-        navigate("/workout");
+        navigate("/checkout");
         goTop();
       } else {
         if (response.status === 404) {
